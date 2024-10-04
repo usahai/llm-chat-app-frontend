@@ -8,7 +8,7 @@ function ChatUsersList() {
 
   return (
     <>
-      <p className="p-4 font-bold text-xl">Chats</p>
+      <p className="p-4 font-bold text-xl">Conversation</p>
       <hr className="bg-slate-600" />
       <div className="overflow-y-auto">
         {chatUsers?.map((item) => (

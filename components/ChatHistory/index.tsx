@@ -18,7 +18,7 @@ function ChatHistory() {
     <>
       {!selectedChat ? (
         <div className="h-full flex justify-center items-center text-3xl text-gray-300/80">
-          Please select a chat
+          Please select a conversation
         </div>
       ) : (
         !!data &&
@@ -26,7 +26,7 @@ function ChatHistory() {
           <div className="h-full flex justify-center items-center text-3xl text-gray-300/80 text-center">
             Please type something
             <br />
-            to begin a chat
+            to begin a conversation
           </div>
         )
       )}
