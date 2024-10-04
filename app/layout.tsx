@@ -19,7 +19,11 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div id="appRootLayout" className="container w-full mx-auto ">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

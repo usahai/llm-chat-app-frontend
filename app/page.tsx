@@ -6,7 +6,7 @@ function Home() {
   return (
     <div
       id="appRoot"
-      className="container w-full mx-auto min-h-screen flex justify-center items-center py-6"
+      className="min-h-screen flex justify-center items-center py-6"
     >
       <div className="w-1/5 border-white border-2 rounded-l-md">
         <div id="box" className="h-[calc(100vh-3rem)] w-full flex flex-col">
