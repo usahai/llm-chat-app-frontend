@@ -1,36 +1,46 @@
-import type { ChatUser } from "@/types/chatUser";
+import { ChatContext } from "@/contexts/chat";
+import type { ChatContextProps, ChatUser } from "@/types/chats";
+import { cn } from "@/utils/cn";
 import { millisToReadableDate } from "@/utils/date";
-import { ActionIcon, Button } from "@mantine/core";
-import { Settings } from "lucide-react";
-import Link from "next/link";
+import { Card } from "@mantine/core";
+import { MouseEvent, useContext } from "react";
+import Preferences from "./Preferences";
 
 interface ChatUserProps {
   data: ChatUser;
 }
 
 function ChatUser({ data: { id, name, timestamp } }: ChatUserProps) {
+  const { selectedChat, handleSelectChat } = useContext(
+    ChatContext
+  ) as ChatContextProps;
+
+  function handleSelection(event: MouseEvent<HTMLDivElement>) {
+    handleSelectChat(event.currentTarget.id);
+  }
+
   return (
-    <Button
-      classNames={{
-        inner: "w-full",
-        label: "flex",
-        root: "p-4 flex font-normal bg-gray-500 border-b border-b-black w-full text-start hover:bg-gray-600",
-      }}
+    <Card
+      className={cn(
+        "p-4 flex font-normal bg-gray-500 border-b border-b-black w-full text-start hover:bg-gray-600 cursor-pointer",
+        {
+          ["bg-gray-700"]: id === selectedChat,
+        }
+      )}
+      id={id}
+      component="div"
+      onClick={handleSelection}
     >
-      <div className="w-5/6">
-        <p>{name}</p>
+      <div className="w-5/6 font-medium text-white">
+        <p className="text-lg">{name}</p>
         <span className="text-xs italic">
           {millisToReadableDate(timestamp)}
         </span>
       </div>
       <div className="w-1/6 flex items-center">
-        <ActionIcon id={id} className="rounded-full p-2 hover:bg-slate-700">
-          <Link href={id}>
-            <Settings />
-          </Link>
-        </ActionIcon>
+        <Preferences id={id} />
       </div>
-    </Button>
+    </Card>
   );
 }
 

@@ -1,5 +1,5 @@
 import getChatUsers from "@/services/chatUsers";
-import { ChatUser } from "@/types/chatUser";
+import { ChatUser } from "@/types/chats";
 import { useQuery } from "@tanstack/react-query";
 
 function useChatUsers() {
