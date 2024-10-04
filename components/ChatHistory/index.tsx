@@ -21,7 +21,14 @@ function ChatHistory() {
           Please select a chat
         </div>
       ) : (
-        !!data && data?.length === 0 && <div>Please type something</div>
+        !!data &&
+        data?.length === 0 && (
+          <div className="h-full flex justify-center items-center text-3xl text-gray-300/80 text-center">
+            Please type something
+            <br />
+            to begin a chat
+          </div>
+        )
       )}
       {!!data && data?.length > 0 && (
         <div id="chatHistory" className="flex flex-col-reverse gap-2">
