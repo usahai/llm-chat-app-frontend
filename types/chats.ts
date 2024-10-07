@@ -27,3 +27,7 @@ export interface ChatContextProps {
   handleClearChat: () => void;
 }
 
+export interface ChatUpdate {
+  userId: string;
+  message: string
+}
